@@ -3,6 +3,16 @@ var requestProxy = require('express-request-proxy'),
   port = process.env.PORT || 3000,
   app = express();
 
+  var proxyYoutube = function(request, response) {
+    console.log('Routing Youtube request for', request.params[0]);
+    (requestProxy({
+      url: 'https://gdata.youtube.com/feeds/api/videos' + request.params[0],
+      headers: { Authorization: 'token ' + youtubeToken }
+    }))(request, response);
+  };
+
+app.get('/youtube/*', proxyYoutube);
+
 app.use(express.static('./'));
 
 app.get('*', function(request, response) {
