@@ -6,8 +6,8 @@ var requestProxy = require('express-request-proxy'),
   var proxyYoutube = function(request, response) {
     console.log('Routing Youtube request for', request.params[0]);
     (requestProxy({
-      url: 'https://gdata.youtube.com/feeds/api/videos' + request.params[0],
-      headers: { Authorization: 'token ' + youtubeToken }
+      url: 'https://developers.google.com/' + request.params[0],
+      headers: { Authorization: 'token ' + process.env.youtubeToken }
     }))(request, response);
   };
 

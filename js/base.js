@@ -1,18 +1,21 @@
-//Grab youtube api
-
+// var youtubeToken = 'AIzaSyCC-TTxkXDXDi5YC6rIcOz3tERA4rGKGZ8';
+var videosByCategory = {};
+videosByCategory.all = [];
+var userSearch = $('.search');
 
 videosByCategory.requestVideos = function() {
-  $.ajax({
-    url:   'https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&order=viewCount&q=skateboarding+dog&type=video&videoDefinition=high',
-    type: 'GET',
-    headers: { 'Authorization': 'token ' + youtubeToken },
-    success: function(data, message, xhr) {
-      console.log("success");
-      console.log(data);
-      videosByCategory.all = data.map(function(ele) {
-        return ele;
-      });
-    }).done(function() {
-    console.log("hi");
+  $.get(
+    'https://www.googleapis.com/youtube/v3/search',{
+      part: 'snippet',
+      maxResults: 5,
+      q: 'dogs',
+      key: 'AIzaSyCC-TTxkXDXDi5YC6rIcOz3tERA4rGKGZ8',
+      function(data) {
+        console.log("success");
+        console.log(data);
+      //   videosByCategory.all = data.map(function(ele) {
+      //     return ele;
+      // });
+    }
   });
 };
