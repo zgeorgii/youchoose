@@ -1,0 +1,15 @@
+{
+  "name": "youChoose",
+  "version": "1.0.0",
+  "description": "List of all my projects along with some info about me.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chad Oehlschlaeger-Browne, Stephen Schroeder, Zach Georgii",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express-request-proxy": "^1.0.10"
+  }
+}
