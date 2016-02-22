@@ -1,0 +1,44 @@
+header {
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient(to bottom, #e52d27,   #b31217);
+  margin-bottom: 1%;
+  padding: .3%;
+  border-radius: 7px;
+}
+ /*e52d27
+ b31217*/
+body {
+
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  background: linear-gradient(to right, #e52d27,   #b31217);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 14%;
+  border-radius: 7px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.videos {
+  display: flex;
+  flex-flow: wrap;
+  flex-wrap: wrap-reverse;
+  width: 85%;
+}
+.video {
+  height: 33%;
+  width: 33%;
+}
