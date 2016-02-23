@@ -8,6 +8,8 @@ body {
 .logo {
   display: inline;
   font-family: 'Pathway Gothic One', sans-serif;
+  border: none;
+  width: 20%;
 }
 span {
   font-family: 'Pathway Gothic One', sans-serif;
