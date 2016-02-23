@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>youchoose</title>
+    <!-- <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+  </head>
+  <body>
+    <button id="authorize-button">authroize</button>
+
+
+  <script src="js/googleid.js"></script>
+  <script src="js/googleProfs.js"></script>
+
+  <script>
+  function init() {
+    handleClientLoad();
+    checkAuth();
+    handleAuthResult(authResult);
+    handleAuthClick(event);
+    makeApiCall();
+  }
+  </script>
+  <script src="https://apis.google.com/js/client.js?onload=init"></script>
+
+
+  </body>
+</html>
