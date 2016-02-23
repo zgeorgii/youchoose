@@ -1,4 +1,5 @@
 header {
+  position: absolute;
   display: flex;
   justify-content: space-between;
   margin-bottom: 1%;
@@ -11,8 +12,7 @@ body {
 }
 
 main {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
 }
 
 nav {
