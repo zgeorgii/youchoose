@@ -1,17 +1,18 @@
 * {
   font-family: 'Carrois Gothic', sans-serif;
+  color: white;
 }
 body {
   background-color: rgb(13, 13, 13);
 }
 .logo {
+  display: inline;
   font-family: 'Pathway Gothic One', sans-serif;
-  color: rgb(255, 255, 255);
 }
 span {
   font-family: 'Pathway Gothic One', sans-serif;
   padding: 1%;
   color: rgb(55, 55, 55);
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   border-radius: 8px;
 }

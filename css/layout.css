@@ -1,10 +1,9 @@
 header {
   display: flex;
-  justify-content: space-around;
-  background: linear-gradient(to bottom, #e52d27,   #b31217);
+  justify-content: space-between;
   margin-bottom: 1%;
-  padding: .3%;
-  border-radius: 7px;
+  margin-left: 10%;
+  margin-right: 2%;
 }
 
 body {
@@ -20,22 +19,26 @@ nav {
   background: linear-gradient(to right, #e52d27,   #b31217);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 14%;
-  border-radius: 7px;
+  width: 5%;
+  border-radius: calc(7px);
 }
 
 ul {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .videos {
   display: flex;
   flex-flow: wrap;
   flex-wrap: wrap-reverse;
-  width: 85%;
+  width: 94%;
 }
 .video {
   height: 33%;
