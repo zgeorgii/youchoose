@@ -1,5 +1,7 @@
 h1 {
-
+background: linear-gradient(to bottom, #e52d27, #b31217);
+padding: .5%;
+border-radius: calc(7px);
 }
 
 h2 {
@@ -7,7 +9,7 @@ h2 {
 }
 
 h3 {
-  
+
 }
 
 a {
