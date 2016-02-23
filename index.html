@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/module.css"/>
     <link rel="stylesheet" href="css/layout.css"/>
     <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/modalVideo.css"/>
     <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
@@ -20,30 +21,30 @@
       <h3 class="login"><a>Welcome (user)</a></h3>
     </header>
     <main>
-      <nav>
-        <ul>
-          <h2>Menu</h2>
-          <li class="tab">Category</li>
-          <li class="tab">Profile</li>
-          <li class="tab">Options</li>
-        </ul>
-      </nav>
       <div class="videos">
-        <div class="video" id="vid1"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
-        <div class="video" id="vid2"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
-        <div class="video" id="vid3"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
-        <div class="video" id="vid4"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
-        <div class="video" id="vid5"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
-        <div class="video" id="vid6"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
-        <div class="video" id="vid7"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
-        <div class="video" id="vid8"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
-        <div class="video" id="vid9"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid1"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid2"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid3"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid4"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid5"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid6"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid7"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid8"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
+        <div class="videoCover" id="vid9"><img src="http://cdn.oscarmini.com/wp-content/uploads/2015/02/youtube-vid.jpg" /></div>
       </div>
+
+      <!--div's for modal windows-->
+      <div class="modalVideoBG"></div>
+      <div class="modalVideoWrap">
+        <button class="modalClose"> X </button>
+      </div>
+
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+    <script src="js/modalVideo.js"></script>
     <script src="js/app.js"></script>
     <script src="js/login.js"></script>
     <script src="js/userservice.js"></script>
