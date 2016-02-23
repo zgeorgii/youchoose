@@ -1,7 +1,7 @@
-angular.module('rtfmApp')
-.controller('mainPageController', function($scope, $location, userService, threadService){
+angular.module('youChoose')
+.controller('mainPageController', function($scope, $location, userservice, threadService){
 
-    $scope.user = userService.getLoggedInUser();
+    $scope.user = userservice.getLoggedInUser();
 
     $scope.newThreadTitle = '';
 
@@ -32,4 +32,4 @@ angular.module('rtfmApp')
     }
 
 });
-Status API Training Shop Blog About Pricing
+// Status API Training Shop Blog About Pricing

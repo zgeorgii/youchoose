@@ -1,6 +1,6 @@
 angular.module('youChoose')
-.controller('loginPageController', function($scope, $location, userService){
+.controller('loginPageController', function($scope, $location, userservice){
     $scope.loginWithGoogle = function(){
-        userService.loginWithGoogle()
+        userservice.loginWithGoogle()
     }
 });

@@ -1,4 +1,4 @@
-angular.module('rtfmApp', ['ngRoute', 'firebase'])
+angular.module('youChoose', ['ngRoute', 'firebase'])
 .constant('fb', {
   url: 'https://you-choose.firebaseio.com'
 })
