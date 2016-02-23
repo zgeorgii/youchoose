@@ -3,8 +3,8 @@
 //javascript for modal video
 $('.videoCover').on('click', function(e) {
   e.preventDefault();
-  videoToCopy = $(this).child();
-  $('.modalVideoWrap').append('<iframe id="modalVideo" width="840" src=' + videoToCopy + "?autoplay=1" + ' height="490" frameborder="0" allowfullscreen></iframe>');
+  videoToCopy = $(this).child;
+  $('.modalVideoWrap').append('<iframe class="modalVideo" src=' + videoToCopy + "?autoplay=1" + ' frameborder="0" allowfullscreen></iframe>');
   $('.modalVideoBG').css("visibility", "visible");
   $('.modalVideoWrap').css('visibility', 'visible');
   $('.modalVideoBG').css('opacity', .99);
