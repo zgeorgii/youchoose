@@ -1,4 +1,4 @@
-#modalVideoBG {
+.modalVideoBG {
 	height: 100%;
 	width: 100%;
 	z-index: 100;
@@ -8,7 +8,7 @@
 	position: absolute;
 	transition: opacity .99s linear;
 }
-#modalVideoWrap {
+.modalVideoWrap {
 	top: 0px;
 	bottom: 0px;
 	right: 0px;
@@ -22,7 +22,7 @@
 	z-index: 100;
 	transition: opacity 1s linear;
 }
-#modalVideo {
+.modalVideo {
 	top: 0px;
 	bottom: 0px;
 	right: 0px;
@@ -32,7 +32,7 @@
 	height: 490px;
 	opacity: 1;
 }
-#modalClose {
+.modalClose {
 	top: 0px;
 	right: 0px;
 	width: 68px;
