@@ -8,6 +8,8 @@ videosByCategory.requestVideos = function() {
     {
       part: 'snippet',
       maxResults: 50,
+      order: 'viewCount',
+      safeSearch: 'none',
       q: 'dog',
       key: 'AIzaSyCC-TTxkXDXDi5YC6rIcOz3tERA4rGKGZ8'
     },
