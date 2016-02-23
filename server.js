@@ -3,6 +3,8 @@ var requestProxy = require('express-request-proxy'),
   port = process.env.PORT || 3000,
   app = express();
 
+var Firebase = require("firebase");
+
 //   var proxyYoutube = function(request, response) {
 //     console.log('Routing Youtube request for', request.params[0]);
 //     (requestProxy({
