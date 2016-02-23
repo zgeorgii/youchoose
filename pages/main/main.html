@@ -1,0 +1,13 @@
+<div ng-controller="mainPageController">
+    <div>Welcome {{user.name}}! <button ng-click="logout()">Logout</button></div>
+    <h2>All Threads</h2>
+    <div>
+        <input type="text" ng-model='newThreadTitle' placeholder="New thread title..."/>
+        <button ng-click="addThread()">Add thread</button>
+    </div>
+    <div>
+        <div ng-repeat="thread in threads">
+            <a ng-href="#/thread/{{thread.$id}}"> {{thread.title}} by {{thread.username}}</a>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-angular.module('youChoose').service('userService', function($firebaseAuth, fb, $location){
+angular.module('youChoose').service('userservice', function($firebaseAuth, fb, $location){
   var user = {
     name: ''
   };
