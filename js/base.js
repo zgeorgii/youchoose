@@ -9,7 +9,7 @@ videosByCategory.requestVideos = function() {
     {
       part: 'snippet',
       maxResults: 50,
-      q: 'dogs',
+      q: 'dog',
       key: 'AIzaSyCC-TTxkXDXDi5YC6rIcOz3tERA4rGKGZ8'
     },
     function(data) {
