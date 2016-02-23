@@ -8,8 +8,8 @@ videosByCategory.requestVideos = function() {
     'https://www.googleapis.com/youtube/v3/search',
     {
       part: 'snippet',
-      maxResults: 100,
-      q: userSearch + '',
+      maxResults: 50,
+      q: 'dogs',
       key: 'AIzaSyCC-TTxkXDXDi5YC6rIcOz3tERA4rGKGZ8'
     },
     function(data) {
