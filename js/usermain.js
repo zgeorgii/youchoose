@@ -1,6 +1,4 @@
-// angular.module('rtfmApp')
-//   .controller('mainPageController', function($scope, $location, userService, threadService){
-//     $scope.user = userService.getLoggedInUser();
-//
-//     $scope.newThreadTitle
-//   })
+$('.videos').on('click', function(event) {
+  console.log(this);
+  $(this).remove(event);
+});
