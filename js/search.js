@@ -3,16 +3,26 @@
   videosByCategory.all = [];
   var userSearch;
 
-
   //function to search videos on submit
   $('.search-form').on('submit', function(e) {
     e.preventDefault();
+    videosByCategory.all = [];
     userSearch = $('.search-text').val();
     videosByCategory.empty();
     videosByCategory.requestVideos(userSearch);
+    console.log("hello");
+    $('#draggable').draggable();
   });
 
   //code to remove videos and add a new one
+  $('.videos').on("swipe", "div", function() {
+    $(this).remove();
+    if (videosByCategory.all.length > 0) {
+      videosByCategory.addVideo();
+    } else {
+      videosByCategory.requestVideos(userSearch);
+    }
+  });
   $('.videos').on("swipe", "div", function() {
     $(this).remove();
     if (videosByCategory.all.length > 0) {

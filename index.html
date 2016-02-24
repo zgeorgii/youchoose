@@ -14,6 +14,7 @@
     <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="vendors/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script> -->
   </head>
   <body>
@@ -21,19 +22,9 @@
       <div id="signin-button"></div>
     </div>
     <div id="authOps" style="display:none">
-      <h2>User is now signed in to the app using Google+</h2>
       <button id="signOut" onclick="auth2.signOut()">Sign Out</button>
-      <p>If the user chooses to disconnect, the app must delete all stored
-      information retrieved from Google for the given user.</p>
       <button id="disconnect" >Disconnect your Google account from this app</button>
-
-      <h2>User's profile information</h2>
-      <div id="profile"></div>
-
-      <h2>User's friends that are visible to this app</h2>
       <div id="visiblePeople"></div>
-
-      <h2>Authentication Logs</h2>
       <pre id="authResult"></pre>
     </div>
     <div id="loaderror">
@@ -49,7 +40,7 @@
         <input type="text" class="search-text" value="" placeholder="Search" >
         <input type="submit" name="submit"/>
       </form>
-      <h3 class="login"><a>Welcome (user)</a></h3>
+      <div id="profile"></div>
     </header>
     <main>
       <div class="videos">
@@ -57,7 +48,7 @@
     </main>
     <!--div's for modal windows-->
     <div class="modalVideoBG"></div>
-    <div class="modalVideoWrap">
+    <div class="modalVideoWrap" id="draggable">
       <button class="modalClose"> X </button>
     </div>
     <script src="js/googleProfs.js"></script>
