@@ -1,8 +1,21 @@
 (function (module) {
   var videosByCategory = {};
   videosByCategory.all = [];
-  var userSearch = $('.search');
-  videosByCategory.requestVideos = function() {
+
+  //function to search videos on submit
+  $('.search-form').on('submit', function(e) {
+    e.preventDefault();
+    var userSearch = $('search-form').val;
+    videosByCategory.videosempty();
+    videosByCategory.requestVideos(userSearch);
+  });
+
+  // clear out grid
+  videosByCategory.empty = function() {
+    $('.videos').empty();
+  }
+  //request to grab all videos
+  videosByCategory.requestVideos = function(userSearch) {
     $.get(
       'https://www.googleapis.com/youtube/v3/search',
       {
@@ -10,7 +23,7 @@
         maxResults: 50,
         order: 'viewCount',
         safeSearch: 'none',
-        q: 'dog',
+        q: userSearch,
         key: 'AIzaSyCC-TTxkXDXDi5YC6rIcOz3tERA4rGKGZ8'
       },
       function(data) {
@@ -29,25 +42,13 @@
       }
     )
   };
-  videosByCategory.requestVideos();
 
+  //code to add videos on removal
   videosByCategory.loadList = function() {
     var newList = videosByCategory.all.slice(13,-1);
     var popList = newList.pop();
     $('.videos').append(newList.splice(0,1));
     console.log(newList.length);
-
   };
-
-  // could take the thumbnail images from the get and just put those on the page. We then could load the img in the modal video
-  //img thumbnail is data.items[0].snippet.thumbnails.default.url
-  //video url is "https://www.youtube.com/watch?v=" + data.items[0].id.videoId
-  // )};
-  // };
-
-  function empty() {
-    $('.videos').empty();
-  }
-
   module.videosByCategory = videosByCategory;
 })(window);
