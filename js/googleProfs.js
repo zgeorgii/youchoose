@@ -1,112 +1,140 @@
-// var ref = new Firebase('https://you-choose.firebaseio.com/web/data');
-
-// var clientId = '585210647915-3alrsg3suabf5d501kjr43tt0omgkcrf.apps.googleusercontent.com';
-// var apiKey = 'XtqPmdDka1CwbAPaJZK0GSvY';
-// var scopes = 'https://www.googleapis.com/auth/plus.me';
-//
-// function handleClientLoad() {
-//   gapi.client.setApiKey(apiKey);
-//   window.setTimeout(checkAuth,1);
-//   console.log('clientload');
-// }
-//
-// function checkAuth() {
-//   gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
-//   console.log('checkAuth');
-// }
-//
-// function handleAuthResult(authResult) {
-//   var authorizeButton = document.getElementById('authorize-button');
-//   if (authResult && !authResult.error) {
-//     authorizeButton.style.visibility = 'hidden';
-//     makeApiCall();
-//     console.log('authResult');
-//   } else {
-//     authorizeButton.style.visibility = '';
-//     authorizeButton.onclick = handleAuthClick;
-//   }
-// }
-//
-// function handleAuthClick(event) {
-//   gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
-//   return false;
-//   console.log('authclick');
-// }
-//
-// function makeApiCall() {
-//   gapi.client.load('plus', 'v1', onGapiLoaded).then(function() {
-//     var request = gapi.client.plus.people.get({
-//         'userId': 'me'
-//           });
-//     request.then(function(resp) {
-//       var heading = document.createElement('h4');
-//       var image = document.createElement('img');
-//       image.src = resp.result.image.url;
-//       heading.appendChild(image);
-//       heading.appendChild(document.createTextNode(resp.result.displayName));
-//       console.log('apicall');
-//
-//       document.getElementById('content').appendChild(heading);
-//     }, function(reason) {
-//       console.log('Error: ' + reason.result.error.message);
-//     });
-//   });
-// }
-
-  // function onGapiLoaded(){
-  //   var request = gapi.client.urlshortener.url.get({
-  //     'shortUrl': 'http://goo.gl/fbsS'
-  //   });
-  //   var restRequest = gapi.client.plus.activities.search({'query': 'Google+', 'orderBy': 'best'}).then(function(resp) {
-  //     console.log(resp.result);
-  //   }, function(reason) {
-  //     console.log('Error: ' + reason.result.error.message);
-  //   });
-  //
-  //     gapi.client.request({
-  //       'path': '/plus/v1/activities',
-  //       'params': {'query': 'Google+', 'orderBy': 'best'}
-  //     });
-  //     restRequest.then(function(resp) {
-  //       console.log(resp.result);
-  //     }, function(reason) {
-  //       console.log('Error: ' + reason.result.error.message);
-  //     });
-  //
-  //   request.execute(function(response) {
-  //     appendResults(response.longUrl);
-  //   });
-  // }
-
-  (function() {
-    window.onSignIn = function(authResult) {
-        if (authResult.access_token) {
-            console.log('success');
-            document.body.innerHTML = '';
-            gapi.client.load('plus','v1', function(){
-                var request = gapi.client.plus.people.get({'userId' : 'me'});
-                request.execute(function(response) {
-                    console.log('ID: ' + response.id);
-                    console.log('Display Name: ' + response.displayName);
-                    console.log('Image URL: ' + response.image.url);
-                    console.log('Profile URL: ' + response.url);
-
-                    var name = document.createElement('h3');
-                    name.innerHTML = response.displayName;
-                    document.body.appendChild(name);
-
-                    var img = document.createElement('img');
-                    img.setAttribute('src', response.image.url);
-                    document.body.appendChild(img);
-                });
-            });
-        } else if (authResult.error) {
-            console.log('There was an error: ' + authResult.error);
+var auth2 = {};
+var helper = (function() {
+  return {
+    /**
+     * Hides the sign in button and starts the post-authorization operations.
+     *
+     * @param {Object} authResult An Object which contains the access token and
+     *   other authentication information.
+     */
+    onSignInCallback: function(authResult) {
+      $('#authResult').html('Auth Result:<br/>');
+      for (var field in authResult) {
+        $('#authResult').append(' ' + field + ': ' +
+            authResult[field] + '<br/>');
+      }
+      if (authResult.isSignedIn.get()) {
+        $('#authOps').show('slow');
+        $('#gConnect').hide();
+        helper.profile();
+        helper.people();
+      } else {
+          if (authResult['error'] || authResult.currentUser.get().getAuthResponse() == null) {
+            // There was an error, which means the user is not signed in.
+            // As an example, you can handle by writing to the console:
+            console.log('There was an error: ' + authResult['error']);
+          }
+          $('#authResult').append('Logged out');
+          $('#authOps').hide('slow');
+          $('#gConnect').show();
+      }
+      console.log('authResult', authResult);
+    },
+    /**
+     * Calls the OAuth2 endpoint to disconnect the app for the user.
+     */
+    disconnect: function() {
+      // Revoke the access token.
+      auth2.disconnect();
+    },
+    /**
+     * Gets and renders the list of people visible to this app.
+     */
+    people: function() {
+      gapi.client.plus.people.list({
+        'userId': 'me',
+        'collection': 'visible'
+      }).then(function(res) {
+        var people = res.result;
+        $('#visiblePeople').empty();
+        $('#visiblePeople').append('Number of people visible to this app: ' +
+            people.totalItems + '<br/>');
+        for (var personIndex in people.items) {
+          person = people.items[personIndex];
+          $('#visiblePeople').append('<img src="' + person.image.url + '">');
         }
-    };
-    var po = document.createElement('script'); po.type = 'text/javascript';
-    po.async = true;
-    po.src = 'https://apis.google.com/js/client:plusone.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
+      });
+    },
+    /**
+     * Gets and renders the currently signed in user's profile data.
+     */
+    profile: function(){
+      gapi.client.plus.people.get({
+        'userId': 'me'
+      }).then(function(res) {
+        var profile = res.result;
+        console.log(profile);
+        $('#profile').empty();
+        $('#profile').append(
+            $('<p><img src=\"' + profile.image.url + '\"></p>'));
+        $('#profile').append(
+            $('<p>Hello ' + profile.displayName + '!<br />Tagline: ' +
+            profile.tagline + '<br />About: ' + profile.aboutMe + '</p>'));
+        if (profile.emails) {
+          $('#profile').append('<br/>Emails: ');
+          for (var i=0; i < profile.emails.length; i++){
+            $('#profile').append(profile.emails[i].value).append(' ');
+          }
+          $('#profile').append('<br/>');
+        }
+        if (profile.cover && profile.coverPhoto) {
+          $('#profile').append(
+              $('<p><img src=\"' + profile.cover.coverPhoto.url + '\"></p>'));
+        }
+      }, function(err) {
+        var error = err.result;
+        $('#profile').empty();
+        $('#profile').append(error.message);
+      });
+    }
+  };
 })();
+/**
+ * jQuery initialization
+ */
+$(document).ready(function() {
+  $('#disconnect').click(helper.disconnect);
+  $('#loaderror').hide();
+  if ($('meta')[0].content == '585210647915-pti2lod3tm71okgqqc4u78qd2krfmll7.apps.googleusercontent.com') {
+    alert('This sample requires your OAuth credentials (client ID) ' +
+        'from the Google APIs console:\n' +
+        '    https://code.google.com/apis/console/#:access\n\n' +
+        'Find and replace YOUR_CLIENT_ID with your client ID.'
+    );
+  }
+});
+/**
+ * Handler for when the sign-in state changes.
+ *
+ * @param {boolean} isSignedIn The new signed in state.
+ */
+var updateSignIn = function() {
+  console.log('update sign in state');
+  if (auth2.isSignedIn.get()) {
+    console.log('signed in');
+    helper.onSignInCallback(gapi.auth2.getAuthInstance());
+  }else{
+    console.log('signed out');
+    helper.onSignInCallback(gapi.auth2.getAuthInstance());
+  }
+}
+/**
+ * This method sets up the sign-in listener after the client library loads.
+ */
+function startApp() {
+  gapi.load('auth2', function() {
+    gapi.client.load('plus','v1').then(function() {
+      gapi.signin2.render('signin-button', {
+          scope: 'https://www.googleapis.com/auth/plus.login',
+          fetch_basic_profile: false });
+      gapi.auth2.init({fetch_basic_profile: false,
+          scope:'https://www.googleapis.com/auth/plus.login'}).then(
+            function (){
+              console.log('init');
+              auth2 = gapi.auth2.getAuthInstance();
+              auth2.isSignedIn.listen(updateSignIn);
+              auth2.then(updateSignIn);
+            });
+    });
+  });
+}
