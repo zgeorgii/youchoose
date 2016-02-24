@@ -1,6 +1,6 @@
 // var ref = new Firebase('https://you-choose.firebaseio.com/web/data');
 
-var clentId = '585210647915-3alrsg3suabf5d501kjr43tt0omgkcrf.apps.googleusercontent.com';
+var clientId = '585210647915-3alrsg3suabf5d501kjr43tt0omgkcrf.apps.googleusercontent.com';
 var apiKey = 'XtqPmdDka1CwbAPaJZK0GSvY';
 var scopes = 'https://www.googleapis.com/auth/plus.me';
 
