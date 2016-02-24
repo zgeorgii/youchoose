@@ -1,12 +1,7 @@
 var auth2 = {};
 var helper = (function() {
   return {
-    /**
-     * Hides the sign in button and starts the post-authorization operations.
-     *
-     * @param {Object} authResult An Object which contains the access token and
-     *   other authentication information.
-     */
+
     onSignInCallback: function(authResult) {
       if (authResult.isSignedIn.get()) {
         $('#authOps').show('slow');
@@ -17,15 +12,16 @@ var helper = (function() {
           if (authResult['error'] || authResult.currentUser.get().getAuthResponse() == null) {
             console.log('There was an error: ' + authResult['error']);
           }
-          $('#authResult').append('Logged out');
           $('#authOps').hide('slow');
           $('#gConnect').show();
       }
       console.log('authResult', authResult);
     },
+
     disconnect: function() {
       auth2.disconnect();
     },
+
     people: function() {
       gapi.client.plus.people.list({
         'userId': 'me',
@@ -38,6 +34,7 @@ var helper = (function() {
         }
       });
     },
+
     profile: function(){
       gapi.client.plus.people.get({
         'userId': 'me'
@@ -57,9 +54,7 @@ var helper = (function() {
     }
   };
 })();
-/**
- * jQuery initialization
- */
+
 $(document).ready(function() {
   $('#disconnect').click(helper.disconnect);
   $('#loaderror').hide();
@@ -71,24 +66,20 @@ $(document).ready(function() {
     );
   }
 });
-/**
- * Handler for when the sign-in state changes.
- *
- * @param {boolean} isSignedIn The new signed in state.
- */
+
 var updateSignIn = function() {
   console.log('update sign in state');
   if (auth2.isSignedIn.get()) {
     console.log('signed in');
     helper.onSignInCallback(gapi.auth2.getAuthInstance());
+    $('#profile').show('<img>');
   }else{
     console.log('signed out');
     helper.onSignInCallback(gapi.auth2.getAuthInstance());
+    $('#profile').hide('<img>');
   }
 }
-/**
- * This method sets up the sign-in listener after the client library loads.
- */
+
 function startApp() {
   gapi.load('auth2', function() {
     gapi.client.load('plus','v1').then(function() {
