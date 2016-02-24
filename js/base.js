@@ -14,12 +14,12 @@
         key: 'AIzaSyCC-TTxkXDXDi5YC6rIcOz3tERA4rGKGZ8'
       },
       function(data) {
-        var vidOutput;
+        var vOutput;
         empty();
         $.each(data.items, function(i, item) {
-          vTitle = item.snippet.title;
-          vId = item.id.videoId;
-          vOutput = '<div><iframe src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe></div>';
+          var vTitle = item.snippet.title;
+          var vId = item.id.videoId;
+          vOutput = '<div class="video-cover"><iframe src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe></div>';
           videosByCategory.all.push(vOutput);
         });
         var sample = videosByCategory.all.slice(0,12);
