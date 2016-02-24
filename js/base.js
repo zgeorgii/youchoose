@@ -19,7 +19,7 @@
         $.each(data.items, function(i, item) {
           vTitle = item.snippet.title;
           vId = item.id.videoId;
-          vOutput = '<div><iframe src=\"//www.youtube.com/embed/' + vId + '\"></iframe></div>';
+          vOutput = '<div><iframe src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe></div>';
           videosByCategory.all.push(vOutput);
         });
         var sample = videosByCategory.all.slice(0,12);
@@ -33,7 +33,8 @@
 
   videosByCategory.loadList = function() {
     var newList = videosByCategory.all.slice(13,-1);
-    // $('.videos').append(newList.splice(0,1));
+    var popList = newList.pop();
+    $('.videos').append(newList.splice(0,1));
     console.log(newList.length);
 
   };
