@@ -12,7 +12,8 @@ body {
 }
 
 main {
-  position: relative;
+  position: absolute;
+  top: 20%;
 }
 
 nav {
