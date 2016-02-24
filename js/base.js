@@ -20,22 +20,23 @@
           vTitle = item.snippet.title;
           vId = item.id.videoId;
           vOutput = '<div><iframe src=\"//www.youtube.com/embed/' + vId + '\"></iframe></div>';
-          // $('.videos').append(vOutput);
-          // console.log(vOutput);
           videosByCategory.all.push(vOutput);
-          // console.log(videosByCategory.all);
         });
-        // console.log(videosByCategory.all);
         var sample = videosByCategory.all.slice(0,12);
-        // console.log(sample);
         sample.forEach(function(ele) {
           $('.videos').append(ele);
         });
       }
     )
   };
-  // $('.videos').append(sample);
   videosByCategory.requestVideos();
+
+  videosByCategory.loadList = function() {
+    var newList = videosByCategory.all.slice(13,-1);
+    // $('.videos').append(newList.splice(0,1));
+    console.log(newList.length);
+
+  };
 
   // could take the thumbnail images from the get and just put those on the page. We then could load the img in the modal video
   //img thumbnail is data.items[0].snippet.thumbnails.default.url
