@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>YouChoose</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="585210647915-pti2lod3tm71okgqqc4u78qd2krfmll7.apps.googleusercontent.com"></meta>
     <link rel="stylesheet" href="css/theme.css"/>
     <link rel="stylesheet" href="css/module.css"/>
     <link rel="stylesheet" href="css/layout.css"/>
@@ -16,6 +17,32 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
   </head>
   <body>
+    <div id="gConnect">
+      <div id="signin-button"></div>
+    </div>
+    <div id="authOps" style="display:none">
+      <h2>User is now signed in to the app using Google+</h2>
+      <button id="signOut" onclick="auth2.signOut()">Sign Out</button>
+      <p>If the user chooses to disconnect, the app must delete all stored
+      information retrieved from Google for the given user.</p>
+      <button id="disconnect" >Disconnect your Google account from this app</button>
+
+      <h2>User's profile information</h2>
+      <div id="profile"></div>
+
+      <h2>User's friends that are visible to this app</h2>
+      <div id="visiblePeople"></div>
+
+      <h2>Authentication Logs</h2>
+      <pre id="authResult"></pre>
+    </div>
+    <div id="loaderror">
+      This section will be hidden by jQuery. If you can see this message, you
+      may be viewing the file rather than running a web server.<br />
+      The sample must be run from http or https. See instructions at
+      <a href="https://developers.google.com/+/quickstart/javascript">
+      https://developers.google.com/+/quickstart/javascript</a>.
+    </div>
     <header>
       <img class="logo" src="img/youchoose-logo.png">
       <form class="search-form">
@@ -33,7 +60,8 @@
     <div class="modalVideoWrap">
       <button class="modalClose"> X </button>
     </div>
-
+    <script src="js/googleProfs.js"></script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
     <script src="js/modalVideo.js"></script>
     <script src="js/base.js"></script>
     <script src="js/usermain.js"></script>
