@@ -5,8 +5,8 @@
   //function to search videos on submit
   $('.search-form').on('submit', function(e) {
     e.preventDefault();
-    var userSearch = $('search-form').val;
-    videosByCategory.videosempty();
+    var userSearch = $('.search-text').val();
+    videosByCategory.empty();
     videosByCategory.requestVideos(userSearch);
   });
 
