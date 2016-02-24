@@ -10,11 +10,16 @@
   </head>
   <body>
     <button id="authorize-button" style="visibility: hidden">authorize</button>
-
+    <button class="g-signin"
+        data-scope="https://www.googleapis.com/auth/plus.login"
+        data-clientid="585210647915-3alrsg3suabf5d501kjr43tt0omgkcrf.apps.googleusercontent.com"
+        data-callback="onSignIn"
+        data-theme="dark"
+        data-cookiepolicy="single_host_origin"
+        data-requestvisibleactions="http://schemas.google.com/AddActivity"
+        data-width="wide">
+  </button>
   <script src="js/googleProfs.js"></script>``
-
   <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-
-
   </body>
 </html>
