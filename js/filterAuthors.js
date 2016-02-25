@@ -16,10 +16,10 @@
 var blockedAuthors = [];
 
 $('.block-authors').on('submit', function(e) {
-e.preventDefault();
-var add = $('#blocked-profile').val();
-$('#blocked-profile-names').append('<p>' + add + '</p>');
-$(blockedAuthors).push(add);
+  e.preventDefault();
+  var add = $('#blocked-profile').val();
+  $('#blocked-profile-names').append('<p>' + add + '</p>');
+  $(blockedAuthors).push(add);
 });
 
 // $("form button #submit").on('submit', function(e){
