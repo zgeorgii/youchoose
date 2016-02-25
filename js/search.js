@@ -1,25 +1,23 @@
   var videosByCategory = {};
   videosByCategory.all = [];
   var filteredOutUsers = [];
-  $('.draggable').draggable({scroll:false});
-  var userSearch, thisId;
+  var userSearch, thisId, blockedAuthors = [];
 
-  var blockedArray = localStorage.getItem('blockedAuthors').split(',');
-  var blockedAuthors = JSON.parse(localStorage.getItem('blockedAuthors'));
+
+  (function localCheck() {
+    if(localStorage.blockedAuthors) {
+      blockedAuthors = JSON.parse(localStorage.getItem('blockedAuthors'));
+    }
+  }());
 
   $('.block-authors').on('submit', function(e) {
     e.preventDefault();
     var add = $('#blocked-profile').val();
     $('#blocked-profile-names').append('<p>' + add + '</p>');
     blockedAuthors.push(add);
-    localStorage.blockedAuthors = blockedAuthors;
-  });
-
-
-  if (!blockedAuthors) {
-    blockedAuthors = [];
     localStorage.setItem('blockedAuthors', JSON.stringify(blockedAuthors));
-  }
+
+  });
 
   $('.search-form').on('submit', function(e) {
     e.preventDefault();
@@ -91,20 +89,20 @@
           $('.videos').append(ele);
         });
 
-        (function dragability () {
-          $('.draggable').draggable({
-            containment: 'body',
-            scroll: false,
-            stop: function( event, ui ) {
-              thisId = $(this).attr('id');
-              if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
-                $('#' + thisId).remove();
-                videosByCategory.addVideo();
-                dragability();
-              }
-            }
-          });
-        })();
+        // (function dragability () {
+        //   $('.draggable').draggable({
+        //     containment: 'body',
+        //     scroll: false,
+        //     stop: function( event, ui ) {
+        //       thisId = $(this).attr('id');
+        //       if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
+        //         $('#' + thisId).remove();
+        //         videosByCategory.addVideo();
+        //         dragability();
+        //       }
+        //     }
+        //   });
+        // })();
       }
     );
   };
