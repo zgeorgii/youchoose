@@ -1,9 +1,10 @@
 (function (module) {
+  var filteredOutUsers = [];
   $('.draggable').draggable();
   var videosByCategory = {};
   videosByCategory.all = [];
   var userSearch, thisId;
-  var blockedAuthors = ["asdf"];
+  var blockedAuthors = ["TomSka"];
 
   $('.block-authors').on('submit', function(e) {
   e.preventDefault();
@@ -57,14 +58,13 @@
       'https://www.googleapis.com/youtube/v3/search',
       {
         part: 'snippet',
-        maxResults: 10,
+        maxResults: 50,
         order: 'viewCount',
         safeSearch: 'none',
         q: userSearch,
         key: 'AIzaSyCC-TTxkXDXDi5YC6rIcOz3tERA4rGKGZ8'
       },
       function(data) {
-        var filteredOutUsers = [];
         var counter = 0;
         var vOutput;
         videosByCategory.empty();
@@ -76,29 +76,30 @@
           videosByCategory.all.push(vOutput);
           // console.log(item.snippet.channelTitle);
         });
-        filteredOutUsers = blockedAuthors.forEach(function(ele) {
-          var bob = videosByCategory.all.filter(function(vid) {
-            var vidAuthor = vid.slice(vid.indexOf("data-author=") + 12, vid.indexOf(' class'));
-            if (vidAuthor !== ele && !(filteredOutUsers.indexOf(vidAuthor) < 0)) {
-              console.log("yes");
-            }
-            return vidAuthor !== ele && !(filteredOutUsers.indexOf(vidAuthor) < 0);
-          });
-          alert(videosByCategory.all)
+
+        filteredOutUsers = videosByCategory.all.filter(function(vid) {
+          var vidAuthor = vid.slice(vid.indexOf("data-author=") + 13, vid.indexOf('" class'));
+          return blockedAuthors.indexOf(vidAuthor) < 0;
         });
-        alert(filteredOutUsers);
-        var sample = filteredOutUsers.all.splice(0,12);
+        alert(filteredOutUsers.length);
+
+
+
+        var sample = filteredOutUsers.splice(0,12);
         sample.forEach(function(ele) {
           $('.videos').append(ele);
         });
         $('.draggable').draggable({
           drag: function( event, ui ) {
-            if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
-              thisId = $(this).attr('id');
-              $('#' + thisId).remove();
-              videosByCategory.addVideo();
-              $('.draggable').draggable();
-            }
+            thisId = $(this).attr('id');
+            $('#' + thisId).on('mouseup', function() {
+              console.log("yes");
+              if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
+                $('#' + thisId).remove();
+                videosByCategory.addVideo();
+                $('.draggable').draggable();
+              }
+            });
           }
         });
       }
@@ -107,7 +108,8 @@
 
   //add videos independently
   videosByCategory.addVideo = function() {
-    $('.videos').append(videosByCategory.all.splice(0,1));
+    $('.videos').append(filteredOutUsers.splice(0,1));
+    console.log("videoAdded");
   }
 
 
