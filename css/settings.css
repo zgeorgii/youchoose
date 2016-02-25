@@ -1,0 +1,14 @@
+body {
+  background-color: black;
+}
+.setting_select {
+  margin-top: 5%;
+  width: 80%;
+  height: 80%;
+}
+
+.exit {
+  float: right;
+  margin-right: 5%;
+  margin-top: -1.4%
+}
