@@ -1,4 +1,3 @@
-
   var videosByCategory = {};
   videosByCategory.all = [];
   var filteredOutUsers = [];
@@ -91,17 +90,21 @@
         sample.forEach(function(ele) {
           $('.videos').append(ele);
         });
-        $('.draggable').draggable({
-          scroll: false,
-          stop: function( event, ui ) {
-            thisId = $(this).attr('id');
-            if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
-              $('#' + thisId).remove();
-              videosByCategory.addVideo();
-              $('.draggable').draggable({scroll:false});
+
+        (function dragability () {
+          $('.draggable').draggable({
+            containment: 'body',
+            scroll: false,
+            stop: function( event, ui ) {
+              thisId = $(this).attr('id');
+              if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
+                $('#' + thisId).remove();
+                videosByCategory.addVideo();
+                dragability();
+              }
             }
-          }
-        });
+          });
+        })();
       }
     );
   };
