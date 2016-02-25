@@ -1,5 +1,5 @@
 (function (module) {
-  $('.dragPoint').draggable();
+  $('.draggable').draggable();
   var videosByCategory = {};
   videosByCategory.all = [];
   var userSearch;
@@ -63,14 +63,17 @@
         $.each(data.items, function(i, item) {
           var vTitle = item.snippet.title;
           var vId = item.id.videoId;
-          vOutput = '<div class="video-cover draggable"><iframe src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe><div class="dragPoint"></dib></div>';
+          vOutput = '<div class="video-cover draggable"><iframe class="videoIframe" src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe><div class="dragPoint"></div></div>';
           videosByCategory.all.push(vOutput);
         });
         var sample = videosByCategory.all.splice(0,12);
         sample.forEach(function(ele) {
           $('.videos').append(ele);
         });
-        $('.dragPoint').draggable();
+        $('.draggable').draggable({
+          drag: function( event, ui ) {
+          }
+        });
       }
     );
   };
