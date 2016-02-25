@@ -1,4 +1,5 @@
 (function (module) {
+  $('.dragPoint').draggable();
   var videosByCategory = {};
   videosByCategory.all = [];
   var userSearch;
@@ -11,7 +12,6 @@
     videosByCategory.empty();
     videosByCategory.requestVideos(userSearch);
     console.log("hello");
-    $('#draggable').draggable();
   });
 
   //code to remove videos and add a new one
@@ -57,13 +57,14 @@
         $.each(data.items, function(i, item) {
           var vTitle = item.snippet.title;
           var vId = item.id.videoId;
-          vOutput = '<div class="video-cover"><iframe src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe></div>';
+          vOutput = '<div class="video-cover draggable"><iframe src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe><div class="dragPoint"></dib></div>';
           videosByCategory.all.push(vOutput);
         });
         var sample = videosByCategory.all.splice(0,12);
         sample.forEach(function(ele) {
           $('.videos').append(ele);
         });
+        $('.dragPoint').draggable();
       }
     );
   };

@@ -45,3 +45,13 @@ ul {
   height: 33%;
   width: 33%;
 }
+
+/*Code for dragging elements around*/
+.dragPoint {
+  width: 50px;
+  height: 50px;
+  background: orange;
+}
+.draggable {
+  cursor: move;
+}
