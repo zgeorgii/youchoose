@@ -6,20 +6,21 @@
 //   return blockedAuthors;
 // };
 //
-// var filteredOutUsers = users.blockedAuthors.forEach(function(ele) {
+// var filteredOutUsers = blockedAuthors.forEach(function(ele) {
 //   videosByCategory.all.filter(function(vid) {
 //     return vid.snippet.channelTitle !== ele;
 //   });
 // });
-
 var blockedAuthors = [];
 
 $('.block-authors').on('submit', function(e) {
 e.preventDefault();
 var add = $('#blocked-profile').val();
 $('#blocked-profile-names').append('<p>' + add + '</p>');
-$(blockedAuthors).push(add);
+blockedAuthors.push(add);
 });
+
+
 
 // $("form button #submit").on('submit', function(e){
 //     e.preventDefault();
