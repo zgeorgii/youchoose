@@ -89,20 +89,20 @@
           $('.videos').append(ele);
         });
 
-        // (function dragability () {
-        //   $('.draggable').draggable({
-        //     containment: 'body',
-        //     scroll: false,
-        //     stop: function( event, ui ) {
-        //       thisId = $(this).attr('id');
-        //       if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
-        //         $('#' + thisId).remove();
-        //         videosByCategory.addVideo();
-        //         dragability();
-        //       }
-        //     }
-        //   });
-        // })();
+        (function dragability () {
+          $('.draggable').draggable({
+            containment: 'body',
+            scroll: false,
+            stop: function( event, ui ) {
+              thisId = $(this).attr('id');
+              if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
+                $('#' + thisId).remove();
+                videosByCategory.addVideo();
+                dragability();
+              }
+            }
+          });
+        })();
       }
     );
   };
