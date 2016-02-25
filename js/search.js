@@ -57,7 +57,7 @@
       'https://www.googleapis.com/youtube/v3/search',
       {
         part: 'snippet',
-        maxResults: 50,
+        maxResults: 10,
         order: 'viewCount',
         safeSearch: 'none',
         q: userSearch,
@@ -74,6 +74,7 @@
           var vId = item.id.videoId;
           vOutput = '<div data-author="' + item.snippet.channelTitle + '" class="video-cover draggable" id="video' + counter + '"><iframe class="videoIframe" src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe><div class="dragPoint"></div></div>';
           videosByCategory.all.push(vOutput);
+          // console.log(item.snippet.channelTitle);
         });
         filteredOutUsers = blockedAuthors.forEach(function(ele) {
           var bob = videosByCategory.all.filter(function(vid) {

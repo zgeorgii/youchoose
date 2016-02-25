@@ -4,7 +4,7 @@
 //     blockedAuthors.push user[blockedAuthors];
 //   }
 //   return blockedAuthors;
-// };
+// // };
 //
 //
 // var filteredOutUsers = blockedAuthors.forEach(function(ele) {
