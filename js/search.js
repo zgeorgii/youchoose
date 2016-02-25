@@ -1,16 +1,16 @@
 (function (module) {
   var filteredOutUsers = [];
-  $('.draggable').draggable();
+  $('.draggable').draggable({scroll:false});
   var videosByCategory = {};
   videosByCategory.all = [];
   var userSearch, thisId;
-  var blockedAuthors = ["TomSka"];
+  var blockedAuthors = [];
 
   $('.block-authors').on('submit', function(e) {
-  e.preventDefault();
-  var add = $('#blocked-profile').val();
-  $('#blocked-profile-names').append('<p>' + add + '</p>');
-  $(blockedAuthors).push(add);
+    e.preventDefault();
+    var add = $('#blocked-profile').val();
+    $('#blocked-profile-names').append('<p>' + add + '</p>');
+    $(blockedAuthors).push(add);
   });
 
   //function to search videos on submit
@@ -20,19 +20,18 @@
     userSearch = $('.search-text').val();
     videosByCategory.empty();
     videosByCategory.requestVideos(userSearch);
-    console.log("hello");
   });
 
   //get mouse position
   $(document).mousemove(function(e) {
     xPos = e.pageX;
     yPos = e.pageY;
-    mouseXPosition = Math.round(xPos / $('body').css('width').replace("px", "") * 100);
-    mouseYPosition = Math.round(yPos / $('body').css('height').replace("px", "") * 100);
+    mouseXPosition = Math.round(xPos / $('body').css('width').replace('px', '') * 100);
+    mouseYPosition = Math.round(yPos / $('body').css('height').replace('px', '') * 100);
   });
 
   //code to remove videos and add a new one
-  $('.videos').on("swipe", "div", function() {
+  $('.videos').on('swipe', 'div', function() {
     $(this).remove();
     if (videosByCategory.all.length > 0) {
       videosByCategory.addVideo();
@@ -50,7 +49,7 @@
   // clear out grid
   videosByCategory.empty = function() {
     $('.videos').empty();
-  }
+  };
 
   //request to grab all videos
   videosByCategory.requestVideos = function(userSearch) {
@@ -74,32 +73,25 @@
           var vId = item.id.videoId;
           vOutput = '<div data-author="' + item.snippet.channelTitle + '" class="video-cover draggable" id="video' + counter + '"><iframe class="videoIframe" src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe><div class="dragPoint"></div></div>';
           videosByCategory.all.push(vOutput);
-          // console.log(item.snippet.channelTitle);
         });
 
         filteredOutUsers = videosByCategory.all.filter(function(vid) {
-          var vidAuthor = vid.slice(vid.indexOf("data-author=") + 13, vid.indexOf('" class'));
+          var vidAuthor = vid.slice(vid.indexOf('data-author=') + 13, vid.indexOf('" class'));
           return blockedAuthors.indexOf(vidAuthor) < 0;
         });
-        alert(filteredOutUsers.length);
-
-
-
         var sample = filteredOutUsers.splice(0,12);
         sample.forEach(function(ele) {
           $('.videos').append(ele);
         });
         $('.draggable').draggable({
+          scroll: false,
           stop: function( event, ui ) {
             thisId = $(this).attr('id');
-            // $('#' + thisId).on('mouseup', function() {
-              console.log("yes");
-              if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
-                $('#' + thisId).remove();
-                videosByCategory.addVideo();
-                $('.draggable').draggable();
-              }
-            // });
+            if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
+              $('#' + thisId).remove();
+              videosByCategory.addVideo();
+              $('.draggable').draggable({scroll:false});
+            }
           }
         });
       }
@@ -109,9 +101,7 @@
   //add videos independently
   videosByCategory.addVideo = function() {
     $('.videos').append(filteredOutUsers.splice(0,1));
-    console.log("videoAdded");
-  }
-
-
+    console.log('videoAdded');
+  };
   module.videosByCategory = videosByCategory;
 })(window);
