@@ -51,7 +51,7 @@
       'https://www.googleapis.com/youtube/v3/search',
       {
         part: 'snippet',
-        maxResults: 50,
+        maxResults: 10,
         order: 'viewCount',
         safeSearch: 'none',
         q: userSearch,
@@ -65,6 +65,7 @@
           var vId = item.id.videoId;
           vOutput = '<div class="video-cover draggable"><iframe class="videoIframe" src=\"//www.youtube.com/embed/' + vId + '?autoplay=1\" allowfullscreen></iframe><div class="dragPoint"></div></div>';
           videosByCategory.all.push(vOutput);
+          // console.log(item.snippet.channelTitle);
         });
         var sample = videosByCategory.all.splice(0,12);
         sample.forEach(function(ele) {

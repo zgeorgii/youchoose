@@ -4,7 +4,7 @@
 //     blockedAuthors.push user[blockedAuthors];
 //   }
 //   return blockedAuthors;
-// };
+// // };
 //
 // var filteredOutUsers = users.blockedAuthors.forEach(function(ele) {
 //   videosByCategory.all.filter(function(vid) {
