@@ -9,21 +9,7 @@
 
 
 //
-  var blockedAuthors = JSON.parse(localStorage.getItem('blockedAuthors'));
 
-  $('.block-authors').on('submit', function(e) {
-  e.preventDefault();
-  var add = $('#blocked-profile').val();
-  $('#blocked-profile-names').append('<p>' + add + '</p>');
-    blockedAuthors.push(add);
-    localStorage.blockedAuthors = blockedAuthors;
-  });
-
-
-  if (!blockedAuthors) {
-    blockedAuthors = [];
-    localStorage.setItem('blockedAuthors', JSON.stringify(blockedAuthors));
-  }
 //
 
 
