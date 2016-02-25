@@ -90,16 +90,16 @@
           $('.videos').append(ele);
         });
         $('.draggable').draggable({
-          drag: function( event, ui ) {
+          stop: function( event, ui ) {
             thisId = $(this).attr('id');
-            $('#' + thisId).on('mouseup', function() {
+            // $('#' + thisId).on('mouseup', function() {
               console.log("yes");
               if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
                 $('#' + thisId).remove();
                 videosByCategory.addVideo();
                 $('.draggable').draggable();
               }
-            });
+            // });
           }
         });
       }
