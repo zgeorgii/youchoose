@@ -41,6 +41,12 @@ ul {
   list-style-type: none;
 }
 
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .videos {
   display: flex;
   flex-flow: wrap;

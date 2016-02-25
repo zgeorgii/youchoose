@@ -18,9 +18,9 @@ var helper = (function() {
       console.log('authResult', authResult);
     },
 
-    disconnect: function() {
-      auth2.disconnect();
-    },
+    // disconnect: function() {
+    //   auth2.disconnect();
+    // },
 
     people: function() {
       gapi.client.plus.people.list({
