@@ -32,7 +32,13 @@
     }
   });
 
+  $('.set').on('click', function() {
+    location.href = 'settings.html';
+  });
 
+  $('.exit').on('click', function() {
+    location.href = 'index.html';
+  });
 
   // clear out grid
   videosByCategory.empty = function() {
