@@ -1,15 +1,12 @@
   var videosByCategory = {};
   videosByCategory.all = [];
   var filteredOutUsers = [];
-  var userSearch, thisId, blockedAuthors;
+  var userSearch, thisId, blockedAuthors = [];
+
 
   (function localCheck() {
-    if(localStorage[blockedAuthors]) {
-      blockedAuthors = JSON.parse(localStorage.getItem('blockedAuthors')).split(',');
-    }
-    else {
-      blockedAuthors = [];
-      localStorage.setItem('blockedAuthors', JSON.stringify(blockedAuthors));
+    if(localStorage.blockedAuthors) {
+      blockedAuthors = JSON.parse(localStorage.getItem('blockedAuthors'));
     }
   }());
 
@@ -18,7 +15,8 @@
     var add = $('#blocked-profile').val();
     $('#blocked-profile-names').append('<p>' + add + '</p>');
     blockedAuthors.push(add);
-    
+    localStorage.setItem('blockedAuthors', JSON.stringify(blockedAuthors));
+
   });
 
   $('.search-form').on('submit', function(e) {
