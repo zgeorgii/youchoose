@@ -1,40 +1,64 @@
 
+<!DOCTYPE html>
 <html>
-<head>
-  <title>Google+ JavaScript Quickstart</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
-  <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
-  <meta name="google-signin-client_id" content="585210647915-pti2lod3tm71okgqqc4u78qd2krfmll7.apps.googleusercontent.com"></meta>
-</head>
-<body>
-  <div id="gConnect">
-    <div id="signin-button"></div>
-  </div>
-  <div id="authOps" style="display:none">
-    <h2>User is now signed in to the app using Google+</h2>
-    <button id="signOut" onclick="auth2.signOut()">Sign Out</button>
-    <p>If the user chooses to disconnect, the app must delete all stored
-    information retrieved from Google for the given user.</p>
-    <button id="disconnect" >Disconnect your Google account from this app</button>
-
-    <h2>User's profile information</h2>
-    <div id="profile"></div>
-
-    <h2>User's friends that are visible to this app</h2>
-    <div id="visiblePeople"></div>
-
-    <h2>Authentication Logs</h2>
-    <pre id="authResult"></pre>
-  </div>
-  <div id="loaderror">
-    This section will be hidden by jQuery. If you can see this message, you
-    may be viewing the file rather than running a web server.<br />
-    The sample must be run from http or https. See instructions at
-    <a href="https://developers.google.com/+/quickstart/javascript">
-    https://developers.google.com/+/quickstart/javascript</a>.
-  </div>
-<script src="js/googleProfs.js"></script>
-<script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
-<script src="js/firebase.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>YouChoose</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="585210647915-pti2lod3tm71okgqqc4u78qd2krfmll7.apps.googleusercontent.com"></meta>
+    <link rel="stylesheet" href="css/theme.css"/>
+    <link rel="stylesheet" href="css/module.css"/>
+    <link rel="stylesheet" href="css/layout.css"/>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/modalVideo.css"/>
+    <link rel="stylesheet" href="css/settings.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="vendors/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script> -->
+  </head>
+  <body>
+    <div id="gConnect">
+      <div id="signin-button"></div>
+    </div>
+    <div id="authOps" style="display:none">
+      <button id="signOut" onclick="auth2.signOut()">Sign Out</button>
+      <button id="disconnect" >Disconnect your Google account from this app</button>
+      <div id="visiblePeople"></div>
+      <pre id="authResult"></pre>
+    </div>
+    <div id="loaderror">
+      This section will be hidden by jQuery. If you can see this message, you
+      may be viewing the file rather than running a web server.<br />
+      The sample must be run from http or https. See instructions at
+      <a href="https://developers.google.com/+/quickstart/javascript">
+      https://developers.google.com/+/quickstart/javascript</a>.
+    </div>
+    <header>
+      <img class="logo" src="img/youchoose-logo.png">
+      <form class="search-form">
+        <input type="text" class="search-text" value="" placeholder="Search" >
+        <input type="submit" name="submit"/>
+      </form>
+      <div id="profile"></div>
+      <form class="settings" action="index.html" method="post">
+        <button type='button'>Settings</button>
+      </form>
+    </header>
+    <main>
+      <div class="videos">
+      </div>
+    </main>
+    <!--div's for modal windows-->
+    <div class="modalVideoBG"></div>
+    <div class="modalVideoWrap" id="draggable">
+      <button class="modalClose"> X </button>
+    </div>
+    <script src="js/googleProfs.js"></script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
+    <script src="js/modalVideo.js"></script>
+    <script src="js/search.js"></script>
+  </body>
 </html>
