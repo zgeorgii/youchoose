@@ -6,9 +6,10 @@
 //   return blockedAuthors;
 // };
 //
-// var filteredOutUsers = users.blockedAuthors.forEach(function(ele) {
+//
+// var filteredOutUsers = blockedAuthors.forEach(function(ele) {
 //   videosByCategory.all.filter(function(vid) {
-//     return vid.snippet.channelTitle !== ele;
+//     return vid.snippet.channelTitle !== ele && !(filteredOutUsers.indexOf(vid.snippet.channelTitle) < 0);
 //   });
 // });
 
