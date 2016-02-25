@@ -1,6 +1,5 @@
 * {
   font-family: 'Carrois Gothic', sans-serif;
-  color: white;
 }
 body {
   background-color: rgb(13, 13, 13);
@@ -8,7 +7,4 @@ body {
 .logo {
   border: none;
   width: 20%;
-}
-button {
-  color: black;
 }
