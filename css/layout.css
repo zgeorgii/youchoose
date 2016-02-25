@@ -1,25 +1,7 @@
-html {
-  width: 100%;
-  height: 100%;
-}
-header {
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1%;
-  margin-left: 10%;
-  margin-right: 2%;
-}
-
-body {
-  color:white;
-  width: 100%;
-  height: 100%;
-}
-
-main {
-  position: absolute;
-  top: 20%;
+img {
+  width: 99%;
+  height: 99%;
+  border-radius: 3px;
 }
 
 nav {
@@ -30,47 +12,8 @@ nav {
   border-radius: calc(7px);
 }
 
-ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-decoration: none;
-  list-style-type: none;
-}
-
 .profile-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.videos {
-  display: flex;
-  flex-flow: wrap;
-  flex-wrap: wrap-reverse;
-  margin-left: 5%;
-  width: 90%;
-  height: 100%;
-  border: 5px solid white;
-}
-.video-cover {
-  width: 20%;
-}
-.videoIframe {
-  width: 100%;
-}
-
-/*Code for dragging elements around*/
-.dragPoint {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 70%;
-}
-.draggable {
-  cursor: move;
 }

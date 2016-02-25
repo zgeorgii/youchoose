@@ -1,18 +1,26 @@
-(function (module) {
-  var filteredOutUsers = [];
   var videosByCategory = {};
   videosByCategory.all = [];
+  var filteredOutUsers = [];
+  $('.draggable').draggable({scroll:false});
   var userSearch, thisId;
-  var blockedAuthors = [];
+
+  var blockedArray = localStorage.getItem('blockedAuthors').split(',');
+  var blockedAuthors = JSON.parse(localStorage.getItem('blockedAuthors'));
 
   $('.block-authors').on('submit', function(e) {
     e.preventDefault();
     var add = $('#blocked-profile').val();
     $('#blocked-profile-names').append('<p>' + add + '</p>');
-    $(blockedAuthors).push(add);
+    blockedAuthors.push(add);
+    localStorage.blockedAuthors = blockedAuthors;
   });
 
-  //function to search videos on submit
+
+  if (!blockedAuthors) {
+    blockedAuthors = [];
+    localStorage.setItem('blockedAuthors', JSON.stringify(blockedAuthors));
+  }
+
   $('.search-form').on('submit', function(e) {
     e.preventDefault();
     videosByCategory.all = [];
@@ -106,5 +114,3 @@
     $('.videos').append(filteredOutUsers.splice(0,1));
     console.log('videoAdded');
   };
-  module.videosByCategory = videosByCategory;
-})(window);

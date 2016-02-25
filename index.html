@@ -5,11 +5,9 @@
     <title>YouChoose</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-signin-client_id" content="585210647915-pti2lod3tm71okgqqc4u78qd2krfmll7.apps.googleusercontent.com"></meta>
-    <link rel="stylesheet" href="css/theme.css"/>
-    <link rel="stylesheet" href="css/module.css"/>
-    <link rel="stylesheet" href="css/layout.css"/>
     <link rel="stylesheet" href="css/base.css"/>
-    <link rel="stylesheet" href="css/modalVideo.css"/>
+    <link rel="stylesheet" href="css/layout.css"/>
+    <link rel="stylesheet" href="css/module.css"/>
     <link rel="stylesheet" href="css/settings.css"/>
     <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
@@ -43,12 +41,26 @@
       </div>
     </header>
     <main>
+      <form class="block-authors">
+        <fieldset>
+          <legend>Block YouTube Profiles</legend>
+          <label>Profile Name:</label>
+          <input id="blocked-profile" name="blocked-profile" type="text" />
+          <button id="submit" type="submit">Submit</button>
+        </fieldset>
+      </form>
+      <div id="blocked-profile-names">
+      </div>
       <div class="videos">
       </div>
     </main>
+
     <script src="js/googleProfs.js"></script>
     <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
     <script src="js/modalVideo.js"></script>
     <script src="js/search.js"></script>
+    <script>
+    
+    </script>
   </body>
 </html>
