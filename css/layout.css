@@ -45,14 +45,3 @@ display: inline-block;
   justify-content: space-between;
   align-items: center;
 }
-@media only screen and (max-width: 800px) {
-  .video-cover {
-    position: relative;
-    min-width: 100%;
-  }
-  .dragPoint {
-    position: absolute;
-    width: 100%;
-    height: 30%;
-  }
-}

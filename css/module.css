@@ -36,6 +36,7 @@
 
 /*Code for dragging elements around*/
 .dragPoint {
+  position: absolute;
   left: 0px;
   top: 0px;
   width: 100%;
@@ -55,5 +56,14 @@
     display: block;
     width: 90%;
     border: 5px solid white;
+  }
+  .video-cover {
+    position: relative;
+    min-width: 100%;
+  }
+  .dragPoint {
+    position: absolute;
+    width: 100%;
+    height: 30%;
   }
 }
