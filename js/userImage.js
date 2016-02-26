@@ -11,6 +11,7 @@
     var backgroundImage = localStorage.getItem('image');
     if (backgroundImage) {
       $('body').css('background-image', 'url(' + backgroundImage + ')');
+      $('body').css('background-size', 'cover');
     }
   }
 
@@ -23,3 +24,5 @@
     }
     oFReader.readAsDataURL(oFile);
   }
+
+  // <input id="test" type="file" onchange="loadImageFile(this)" />
