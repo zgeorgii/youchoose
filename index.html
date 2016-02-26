@@ -76,7 +76,7 @@
           <button class='set' type='button'><a href="/settings">Settings</a></button>
         </form>
         <form class="about" action="index.html" method="post">
-          <button class='set' type='button'><a href="/about">about</a></button>
+          <button class='set' type='button'><a href="/about">About</a></button>
         </form>
       </div>
     </header>
@@ -97,6 +97,8 @@
 
     <!--settings page-->
     <section class='settings-page'>
+      <div id="profile-img"></div>
+      <input id="test" type="file" onchange="loadImageFile(this)" />
       <div class='exit'>
         <select class='setting-select'>
           <option value=''>#</option>
@@ -106,13 +108,14 @@
         </form>
       </div>
     </section>
+
+    <!--about page-->
     <section class="about-page">
       <div class='exit'>
         <form class="settings" action="index.html">
           <button class='exit'>Exit</button>
         </form>
       </div>
-      <div id="profile-img"></div>
       <div class="about">
         <div class="left-about">
           <div class="us">

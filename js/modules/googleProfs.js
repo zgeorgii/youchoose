@@ -4,7 +4,7 @@ var helper = (function() {
     onSignInCallback: function(authResult) {
       if (authResult.isSignedIn.get()) {
         $('#auth-ops').show('fast');
-        $('#g-connect').hide();
+        $('#google-connect').hide();
         helper.profile();
         helper.people();
       } else {
@@ -12,7 +12,7 @@ var helper = (function() {
           console.log('There was an error: ' + authResult['error']);
         }
         $('#auth-ops').hide('slow');
-        $('#g-connect').show();
+        $('#google-connect').show();
       }
     },
     people: function() {
@@ -34,6 +34,7 @@ var helper = (function() {
         var profile = res.result;
         console.log(profile);
         $('#profile').empty();
+        $('#profile-img').empty();
         $('#profile-img').append(
           $('<img src=\"' + profile.image.url + '\">'));
         $('#profile').append(
@@ -62,13 +63,11 @@ $(document).ready(function() {
 var updateSignIn = function() {
   console.log('update sign in state');
   if (auth2.isSignedIn.get()) {
-    console.log('signed in');
     helper.onSignInCallback(gapi.auth2.getAuthInstance());
-    $('#profile').show('<img>');
+    $('#profile-img').show('<img>');
   } else{
-    console.log('signed out');
     helper.onSignInCallback(gapi.auth2.getAuthInstance());
-    $('#profile').hide('<img>');
+    $('#profile-img').hide('<img>');
   }
 };
 
@@ -77,11 +76,13 @@ function startApp() {
     gapi.client.load('plus','v1').then(function() {
       gapi.signin2.render('signin-button', {
         scope: 'https://www.googleapis.com/auth/plus.login',
-        fetch_basic_profile: false });
-      gapi.auth2.init({fetch_basic_profile: false,
-        scope:'https://www.googleapis.com/auth/plus.login'}).then(
+        fetch_basic_profile: false
+      });
+      gapi.auth2.init({
+        fetch_basic_profile: false,
+        scope:'https://www.googleapis.com/auth/plus.login'
+      }).then(
           function (){
-            console.log('init');
             auth2 = gapi.auth2.getAuthInstance();
             auth2.isSignedIn.listen(updateSignIn);
             auth2.then(updateSignIn);
