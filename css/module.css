@@ -12,6 +12,7 @@
 .logo {
   border: none;
   width: 20%;
+  min-width: 200px;
 }
 
 /*video grid css*/
@@ -35,7 +36,6 @@
 
 /*Code for dragging elements around*/
 .dragPoint {
-  position: absolute;
   left: 0px;
   top: 0px;
   width: 100%;
