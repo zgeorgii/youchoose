@@ -3,16 +3,16 @@ var helper = (function() {
   return {
     onSignInCallback: function(authResult) {
       if (authResult.isSignedIn.get()) {
-        $('#authOps').show('fast');
-        $('#gConnect').hide();
+        $('#auth-ops').show('fast');
+        $('#g-connect').hide();
         helper.profile();
         helper.people();
       } else {
         if (authResult['error'] || authResult.currentUser.get().getAuthResponse() == null) {
           console.log('There was an error: ' + authResult['error']);
         }
-        $('#authOps').hide('slow');
-        $('#gConnect').show();
+        $('#auth-ops').hide('slow');
+        $('#g-connect').show();
       }
     },
     people: function() {
