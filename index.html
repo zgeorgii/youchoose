@@ -42,6 +42,16 @@
       </div>
     </header>
     <main>
+      <form class="block-authors">
+        <fieldset>
+          <legend>Block YouTube Profiles</legend>
+          <label>Profile Name:</label>
+          <input id="blocked-profile" name="blocked-profile" type="text" />
+          <button id="submit" type="submit">Submit</button>
+        </fieldset>
+      </form>
+      <div id="blocked-profile-names">
+      </div>
       <div class="videos">
       </div>
     </main>
@@ -63,5 +73,6 @@
     <script src="js/search.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/routes.js"></script>
+
   </body>
 </html>

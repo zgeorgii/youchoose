@@ -1,19 +1,24 @@
-(function (module) {
-  var filteredOutUsers = [];
-  $('.draggable').draggable({scroll:false});
   var videosByCategory = {};
   videosByCategory.all = [];
-  var userSearch, thisId;
-  var blockedAuthors = [];
+  var filteredOutUsers = [];
+  var userSearch, thisId, blockedAuthors = [];
+
+
+  (function localCheck() {
+    if(localStorage.blockedAuthors) {
+      blockedAuthors = JSON.parse(localStorage.getItem('blockedAuthors'));
+    }
+  }());
 
   $('.block-authors').on('submit', function(e) {
     e.preventDefault();
     var add = $('#blocked-profile').val();
     $('#blocked-profile-names').append('<p>' + add + '</p>');
-    $(blockedAuthors).push(add);
+    blockedAuthors.push(add);
+    localStorage.setItem('blockedAuthors', JSON.stringify(blockedAuthors));
+
   });
 
-  //function to search videos on submit
   $('.search-form').on('submit', function(e) {
     e.preventDefault();
     videosByCategory.all = [];
@@ -76,17 +81,21 @@
         sample.forEach(function(ele) {
           $('.videos').append(ele);
         });
-        $('.draggable').draggable({
-          scroll: false,
-          stop: function( event, ui ) {
-            thisId = $(this).attr('id');
-            if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
-              $('#' + thisId).remove();
-              videosByCategory.addVideo();
-              $('.draggable').draggable({scroll:false});
+
+        (function dragability () {
+          $('.draggable').draggable({
+            containment: 'body',
+            scroll: false,
+            stop: function( event, ui ) {
+              thisId = $(this).attr('id');
+              if (mouseXPosition < 10 || mouseXPosition > 90 || mouseYPosition < 20 || mouseYPosition > 90) {
+                $('#' + thisId).remove();
+                videosByCategory.addVideo();
+                dragability();
+              }
             }
-          }
-        });
+          });
+        })();
       }
     );
   };
@@ -96,5 +105,3 @@
     $('.videos').append(filteredOutUsers.splice(0,1));
     console.log('videoAdded');
   };
-  module.videosByCategory = videosByCategory;
-})(window);
