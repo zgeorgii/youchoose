@@ -72,25 +72,19 @@
           <div id="visible-people"></div>
           <pre id="auth-result"></pre>
         </div>
-        <form class="settings" action="index.html" method="post">
-          <button class='set' type='button'><a href="/settings">Settings</a></button>
-        </form>
-        <form class="about" action="index.html" method="post">
-          <button class='set' type='button'><a href="/about">About</a></button>
-        </form>
+        <div>
+          <form class="settings" action="index.html" method="post">
+            <button class='set' type='button'><a href="/settings">Settings</a></button>
+          </form>
+        </div>
+        <div>
+          <form class="about" action="index.html" method="post">
+            <button class='set' type='button'><a href="/about">About</a></button>
+          </form>
+        </div>
       </div>
     </header>
     <main>
-      <form class="block-authors">
-        <fieldset>
-          <legend>Block YouTube Profiles</legend>
-          <label>Profile Name:</label>
-          <input id="blocked-profile" name="blocked-profile" type="text" />
-          <button id="submit" type="submit">Submit</button>
-        </fieldset>
-      </form>
-      <div id="blocked-profile-names">
-      </div>
       <div class="videos">
       </div>
     </main>
@@ -99,6 +93,16 @@
     <section class='settings-page'>
       <div id="profile-img"></div>
       <input id="test" type="file" onchange="loadImageFile(this)" />
+      <form class="block-authors">
+        <fieldset>
+          <legend>Block YouTube Profiles</legend>
+          <label>Profile Name:</label>
+          <input id="blocked-profile" name="blocked-profile" type="text" />
+          <button id="submit" type="submit">Submit</button>
+          <div id="blocked-profile-names">
+          </div>
+        </fieldset>
+      </form>
       <div class='exit'>
         <select class='setting-select'>
           <option value=''>#</option>
@@ -108,7 +112,6 @@
         </form>
       </div>
     </section>
-
     <!--about page-->
     <section class="about-page">
       <div class='exit'>

@@ -15,12 +15,10 @@ body {
 }
 
 main {
-  position: absolute;
   top: 20%;
 }
 
 header {
-  position: absolute;
   display: flex;
   justify-content: space-between;
   margin-bottom: 1%;
@@ -45,10 +43,18 @@ ul {
   list-style-type: none;
 }
 
+li {
+  list-style-type: none;
+}
+
 h3 {
   color: white;
 }
 
 input {
   color: black;
+}
+
+a {
+  text-decoration: none;
 }

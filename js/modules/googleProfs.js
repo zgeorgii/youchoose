@@ -65,9 +65,11 @@ var updateSignIn = function() {
   if (auth2.isSignedIn.get()) {
     helper.onSignInCallback(gapi.auth2.getAuthInstance());
     $('#profile-img').show('<img>');
+    $('#profile').show('<h3>');
   } else{
     helper.onSignInCallback(gapi.auth2.getAuthInstance());
     $('#profile-img').hide('<img>');
+    $('#profile').hide('<h3>');
   }
 };
 
