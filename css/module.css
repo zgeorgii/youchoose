@@ -45,3 +45,7 @@
 .draggable {
   cursor: move;
 }
+
+.about-page {
+  display: none;
+}
