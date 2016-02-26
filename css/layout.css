@@ -18,6 +18,10 @@ nav {
   align-items: center;
 }
 
-/*.settings-page {
+.settings-page {
   display: none;
-}*/
+}
+
+.about-page {
+  display: none;
+}
