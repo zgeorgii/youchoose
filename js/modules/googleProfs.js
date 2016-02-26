@@ -4,7 +4,7 @@ var helper = (function() {
     onSignInCallback: function(authResult) {
       if (authResult.isSignedIn.get()) {
         $('#auth-ops').show('fast');
-        $('#g-connect').hide();
+        $('#google-connect').hide();
         helper.profile();
         helper.people();
       } else {

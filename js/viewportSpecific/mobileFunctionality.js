@@ -18,7 +18,7 @@ videosByCategory.requestVideos = function(userSearch) {
         counter++;
         var vTitle = item.snippet.title;
         var vId = item.id.videoId;
-        vOutput = '<div data-author="' + item.snippet.channelTitle + '" class="video-cover draggable" id="video' + counter + '"><iframe class="videoIframe" src=\"//www.youtube.com/embed/' + vId + '\" allowfullscreen></iframe></div>';
+        vOutput = '<div data-author="' + item.snippet.channelTitle + '" class="video-cover draggable" id="video' + counter + '"><iframe class="videoIframe" src=\"//www.youtube.com/embed/' + vId + '\" allowfullscreen></iframe><div class="dragPoint"></div></div>';
         videosByCategory.all.push(vOutput);
       });
       filteredOutUsers = videosByCategory.all.filter(function(vid) {
@@ -34,7 +34,8 @@ videosByCategory.requestVideos = function(userSearch) {
 };
 
 //code to remove videos and add a new one
-$('.videos').on('swipe', 'div', function() {
+$('.videos').on('swipe', '.video-cover', function() {
+  console.log("bobbo");
   $(this).remove();
   if (videosByCategory.all.length > 0) {
     videosByCategory.addVideo();
