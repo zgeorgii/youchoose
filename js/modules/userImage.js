@@ -24,5 +24,3 @@
     }
     oFReader.readAsDataURL(oFile);
   }
-
-  // <input id="test" type="file" onchange="loadImageFile(this)" />
