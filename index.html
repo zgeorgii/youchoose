@@ -14,6 +14,7 @@
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="vendors/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
     <script src="vendors/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.6.4/page.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script> -->
   </head>
   <body>
@@ -36,7 +37,7 @@
           <pre id="authResult"></pre>
         </div>
         <form class="settings" action="index.html" method="post">
-          <button class='set' type='button'>Settings</button>
+          <button class='set' type='button'><a href="/settings">Settings</a></button>
         </form>
       </div>
     </header>
@@ -54,13 +55,24 @@
       <div class="videos">
       </div>
     </main>
+    <section class='settings-page'>
 
+      <div class='exit'>
+        <select class='setting-select'>
+          <option value=''>#</option>
+        </select>
+        <form class="settings" action="index.html">
+          <button class='exit'>Exit</button>
+        </form>
+      </div>
+
+    </section>
     <script src="js/googleProfs.js"></script>
     <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
     <script src="js/modalVideo.js"></script>
     <script src="js/search.js"></script>
-    <script>
-    
-    </script>
+    <script src="js/settings.js"></script>
+    <script src="js/routes.js"></script>
+
   </body>
 </html>
