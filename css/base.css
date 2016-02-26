@@ -19,8 +19,6 @@ main {
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 1%;
   margin-left: 10%;
   margin-right: 2%;

@@ -61,26 +61,22 @@
         <input type="text" class="search-text" value="" placeholder="Search" >
         <input type="submit" name="submit"/>
       </form>
+      <div id="auth-ops" style="display:none">
+        <button id="sign-out" onclick="auth2.signOut()">Sign Out</button>
+        <div id="visible-people"></div>
+        <pre id="auth-result"></pre>
+      </div>
       <div id="google-connect">
         <div id="signin-button"></div>
       </div>
+      <form class="settings" action="index.html" method="post">
+        <button class='set' type='button'><a href="/settings">Settings</a></button>
+      </form>
+      <form class="about" action="index.html" method="post">
+        <button class='set' type='button'><a href="/about">About</a></button>
+      </form>
       <div class="profile-box">
         <div id="profile">
-        </div>
-        <div id="auth-ops" style="display:none">
-          <button id="sign-out" onclick="auth2.signOut()">Sign Out</button>
-          <div id="visible-people"></div>
-          <pre id="auth-result"></pre>
-        </div>
-        <div>
-          <form class="settings" action="index.html" method="post">
-            <button class='set' type='button'><a href="/settings">Settings</a></button>
-          </form>
-        </div>
-        <div>
-          <form class="about" action="index.html" method="post">
-            <button class='set' type='button'><a href="/about">About</a></button>
-          </form>
         </div>
       </div>
     </header>
@@ -104,9 +100,6 @@
         </fieldset>
       </form>
       <div class='exit'>
-        <select class='setting-select'>
-          <option value=''>#</option>
-        </select>
         <form class="settings" action="index.html">
           <button class='exit'>Exit</button>
         </form>
@@ -119,25 +112,16 @@
           <button class='exit'>Exit</button>
         </form>
       </div>
-      <div class="about">
+      <div class="aboutPics">
         <div class="left-about">
           <div class="us">
             <img class="zach" src="https://avatars.slack-edge.com/2016-01-04/17722810371_3c21167fd5e822e971d3_512.jpg"/>
-            <p>
-              hello
-            </p>
           </div>
           <div class="us">
             <img class="chad" src="https://avatars.slack-edge.com/2016-02-04/20351232740_0cb2b1fc51564b93173c_512.jpg"/>
-            <p>
-              hello
-            </p>
           </div>
           <div class="us">
             <img class="stephen" src="https://avatars.slack-edge.com/2015-11-24/15259919139_5ceb6523b73da4204b63_192.jpg"/>
-            <p>
-              hello
-            </p>
           </div>
         </div>
         <div class="right-about">
