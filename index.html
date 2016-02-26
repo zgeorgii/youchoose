@@ -13,9 +13,46 @@
     <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="vendors/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
-    <script src="vendors/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <script>
+      (function ($) {
+        if ($(window).width() <= 1024) {
+          console.log("mobile");
+         $.ajax({
+           url     : 'vendors/jquery.mobile.custom.min.js',
+           dataType : 'script'
+         }).done(function() {
+            $.ajax({
+              url      : 'js/controllers/blockedController.js',
+              dataType : 'script'
+            }).done(function() {
+              $.ajax({
+                url      : 'js/viewportSpecific/mobileFunctionality.js',
+                dataType : 'script'
+              });
+            });
+          });
+        } else {
+         $.ajax({
+           url      : 'vendors/jquery-ui-1.11.4.custom/jquery-ui.min.js',
+           dataType : 'script'
+         }).done(function() {
+           $.ajax({
+             url      : 'js/controllers/blockedController.js',
+             dataType : 'script',
+             succes: function() {
+             }
+           }).done(function() {
+             $.ajax({
+               url      : 'js/viewportSpecific/requestVideosDesktop.js',
+               dataType : 'script'
+             });
+           });
+         });
+         console.log("pc");
+       };
+     })(jQuery);
+    </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.6.4/page.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script> -->
   </head>
   <body>
 
@@ -25,22 +62,24 @@
         <input type="text" class="search-text" value="" placeholder="Search" >
         <input type="submit" name="submit"/>
       </form>
-      <div id="gConnect">
+      <div id="google-connect">
         <div id="signin-button"></div>
       </div>
       <div class="profile-box">
         <div id="profile">
         </div>
-        <div id="authOps" style="display:none">
-          <button id="signOut" onclick="auth2.signOut()">Sign Out</button>
-          <div id="visiblePeople"></div>
-          <pre id="authResult"></pre>
+        <div id="auth-ops" style="display:none">
+          <button id="sign-out" onclick="auth2.signOut()">Sign Out</button>
+          <div id="visible-people"></div>
+          <pre id="auth-result"></pre>
         </div>
         <form class="settings" action="index.html" method="post">
           <button class='set' type='button'><a href="/settings">Settings</a></button>
         </form>
       </div>
     </header>
+
+    <!--main page-->
     <main>
       <form class="block-authors">
         <fieldset>
@@ -55,8 +94,9 @@
       <div class="videos">
       </div>
     </main>
-    <section class='settings-page'>
 
+    <!--settings page-->
+    <section class='settings-page'>
       <div class='exit'>
         <select class='setting-select'>
           <option value=''>#</option>
@@ -65,14 +105,12 @@
           <button class='exit'>Exit</button>
         </form>
       </div>
-
     </section>
-    <script src="js/googleProfs.js"></script>
+    <script src="js/modules/googleProfs.js"></script>
     <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
-    <script src="js/modalVideo.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/routes.js"></script>
-
+    <script src="js/controllers/settings.js"></script>
+    <script src="js/modules/routes.js"></script>
+    <script src="js/controllers/events.js"></script>
+    <script src="js/modules/userImage.js"></script>
   </body>
 </html>

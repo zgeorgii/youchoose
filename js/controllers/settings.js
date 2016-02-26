@@ -1,10 +1,3 @@
-// $('.set').on('click', function() {
-//   location.href = 'settings.html';
-// });
-//
-// $('.exit').on('click', function() {
-//   location.href = 'index.html';
-// });
 (function(module) {
   var settingsController = {};
 
