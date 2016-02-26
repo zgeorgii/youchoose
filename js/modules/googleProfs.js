@@ -34,7 +34,7 @@ var helper = (function() {
         var profile = res.result;
         console.log(profile);
         $('#profile').empty();
-        $('#profile').append(
+        $('#profile-img').append(
           $('<img src=\"' + profile.image.url + '\">'));
         $('#profile').append(
           $('<h3>Hello ' + profile.displayName + '!</h3>'));
