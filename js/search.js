@@ -13,7 +13,7 @@
   $('.block-authors').on('submit', function(e) {
     e.preventDefault();
     var add = $('#blocked-profile').val();
-    $('#blocked-profile-names').append('<p>' + add + '</p>');
+    $('#blocked-profile-names').append('<li>' + add + '</li>');
     blockedAuthors.push(add);
     localStorage.setItem('blockedAuthors', JSON.stringify(blockedAuthors));
 
