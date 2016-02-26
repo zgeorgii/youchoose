@@ -11,6 +11,11 @@ nav {
   width: 5%;
   border-radius: calc(7px);
 }
+.profile-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .profile-box {
 display: inline-block;
 }
@@ -33,6 +38,12 @@ display: inline-block;
 }
 .settings-page {
   display: none;
+}
+.settings-page:after {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 @media only screen and (max-width: 800px) {
   .video-cover {
