@@ -13,45 +13,7 @@
     <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="vendors\jquery-2-1-4.js"></script>
-    <script>
-      (function ($) {
-        if ($(window).width() <= 1024) {
-          console.log("mobile");
-         $.ajax({
-           url     : 'vendors/jquery.mobile.custom.min.js',
-           dataType : 'script'
-         }).done(function() {
-            $.ajax({
-              url      : 'js/controllers/blockedController.js',
-              dataType : 'script'
-            }).done(function() {
-              $.ajax({
-                url      : 'js/viewportSpecific/mobileFunctionality.js',
-                dataType : 'script'
-              });
-            });
-          });
-        } else {
-         $.ajax({
-           url      : 'vendors/jquery-ui-1.11.4.custom/jquery-ui.min.js',
-           dataType : 'script'
-         }).done(function() {
-           $.ajax({
-             url      : 'js/controllers/blockedController.js',
-             dataType : 'script',
-             succes: function() {
-             }
-           }).done(function() {
-             $.ajax({
-               url      : 'js/viewportSpecific/requestVideosDesktop.js',
-               dataType : 'script'
-             });
-           });
-         });
-         console.log("pc");
-       };
-     })(jQuery);
-    </script>
+    <script src="js/modules/ajax.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.6.4/page.min.js"></script>
   </head>
   <body>
@@ -61,14 +23,6 @@
         <input type="text" class="search-text" value="" placeholder="Search" >
         <input type="submit" name="submit"/>
       </form>
-      <div id="auth-ops" style="display:none">
-        <button id="sign-out" onclick="auth2.signOut()">Sign Out</button>
-        <div id="visible-people"></div>
-        <pre id="auth-result"></pre>
-      </div>
-      <div id="google-connect">
-        <div id="signin-button"></div>
-      </div>
       <form class="settings" action="index.html" method="post">
         <button class='set' type='button'><a href="/settings">Settings</a></button>
         <button class='set' type='button'><a href="/about">About</a></button>
@@ -76,6 +30,14 @@
       <div class="profile-box">
         <div id="profile">
         </div>
+      </div>
+      <div id="auth-ops" style="display:none">
+        <button id="sign-out" onclick="auth2.signOut()">Sign Out</button>
+        <div id="visible-people"></div>
+        <pre id="auth-result"></pre>
+      </div>
+      <div id="google-connect">
+        <div id="signin-button"></div>
       </div>
     </header>
     <main>

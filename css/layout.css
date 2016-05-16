@@ -3,6 +3,9 @@ img {
   height: 99%;
   border-radius: 3px;
 }
+#google-connect {
+  display: inline-block;
+}
 
 nav {
   background: linear-gradient(to right, #e52d27, #b31217);
