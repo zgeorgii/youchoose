@@ -24,12 +24,6 @@ header {
   margin-right: 2%;
 }
 
-h1 {
-  background: linear-gradient(to bottom, #e52d27, #b31217);
-  padding: .5%;
-  border-radius: calc(7px);
-}
-
 ul {
   display: flex;
   flex-direction: column;

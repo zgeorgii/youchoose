@@ -6,13 +6,14 @@ img {
 #google-connect {
   display: inline-block;
 }
-
-nav {
-  background: linear-gradient(to right, #e52d27, #b31217);
-  display: flex;
-  flex-direction: column;
-  width: 5%;
-  border-radius: calc(7px);
+#auth-ops {
+  padding: 0px;
+}
+#sign-out {
+  border-radius: 5px;
+  border-style: none;
+  background-color: white;
+  margin: 0px;
 }
 .profile-img {
   display: flex;
